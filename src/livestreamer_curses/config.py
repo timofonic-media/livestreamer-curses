@@ -8,7 +8,7 @@ CHECK_ONLINE_ON_START = False
 CHECK_ONLINE_THREADS = 15
 CHECK_ONLINE_INTERVAL = 0
 
-LIVESTREAMER_COMMANDS = ["livestreamer"]
+LIVESTREAMER_COMMANDS = ["streamlink"]
 
 RC_DEFAULT_DIR  = (os.environ.get('XDG_CONFIG_HOME') or
                   os.path.expanduser(u'~/.config/livestreamer-curses'))

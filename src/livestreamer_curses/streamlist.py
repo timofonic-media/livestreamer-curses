@@ -13,7 +13,7 @@ import sys
 import curses
 import os
 
-import livestreamer
+import streamlink
 
 PY3 = sys.version_info.major >= 3
 
@@ -115,7 +115,7 @@ class ProcessList(object):
 class StreamPlayer(object):
     """ Provides a callable to play a given url """
 
-    def play(self, stream, cmd=['livestreamer']):
+    def play(self, stream, cmd=['streamlink']):
         full_cmd = list(cmd)
         for k in stream.keys():
             for i, arg in enumerate(full_cmd):
@@ -180,7 +180,7 @@ class StreamList(object):
 
         TITLE_STRING = TITLE_STRING.format(self.config.VERSION)
 
-        self.cmd_list = list(map(shlex.split, self.config.LIVESTREAMER_COMMANDS))
+        self.cmd_list = list(map(shlex.split, self.config.STREAMLINK_COMMANDS))
         self.cmd_index = 0
         self.cmd = self.cmd_list[self.cmd_index]
 
@@ -195,7 +195,7 @@ class StreamList(object):
         self.no_stream_shown = self.no_streams
         self.q = ProcessList(StreamPlayer().play)
 
-        self.livestreamer = livestreamer.Livestreamer()
+        self.streamlink = streamlink.Streamlink()
 
     def __del__(self):
         """ Stop playing streams and sync storage """
@@ -216,6 +216,11 @@ class StreamList(object):
 
     def init(self, s):
         """ Initialize the text interface """
+
+        if curses.can_change_color():
+            curses.use_default_colors()
+            for i in range(0, curses.COLORS):
+                curses.init_pair(i + 1, i, -1)
 
         # Hide cursor
         curses.curs_set(0)
@@ -641,7 +646,7 @@ class StreamList(object):
 
     def _check_stream(self, url):
         try:
-            plugin = self.livestreamer.resolve_url(url)
+            plugin = self.streamlink.resolve_url(url)
             avail_streams = plugin.get_streams()
             if avail_streams:
                 return 1
