@@ -1,4 +1,4 @@
-Livestreamer-curses
+Streamlink-curses
 -------------------
 
 .. image:: https://img.shields.io/pypi/v/livestreamer-curses.svg
@@ -7,8 +7,8 @@ Livestreamer-curses
 .. image:: https://img.shields.io/pypi/l/livestreamer-curses.svg
    :target: https://pypi.python.org/pypi/livestreamer-curses/
 
-Livestreamer-curses is a limited front-end to Chrippa's
-`Livestreamer <https://github.com/chrippa/livestreamer>`__ for UNIX
+Streamlink-curses is a limited front-end to
+`Livestreamer <https://github.com/streamlink/streamlink>`__ for UNIX
 systems. With it you can manage a list of your favorite streams and play
 them (several at a time if your connection can handle it).
 
@@ -18,11 +18,11 @@ them (several at a time if your connection can handle it).
 Usage
 ~~~~~
 
-Install using ``pip install livestreamer-curses`` which will provide the
-``livestreamer-curses`` command
+Install using ``pip install streamlink-curses`` which will provide the
+``streamlink-curses`` command
 
-To change the way to call ``livestreamer``, use the configuration file
-(see ``livestreamer-curses -h`` for default location). See sample file for configuration options.
+To change the way to call ``streamlink``, use the configuration file
+(see ``streamlink-curses -h`` for default location). See sample file for configuration options.
 
 Changelog
 ~~~~~~~~~
@@ -85,5 +85,5 @@ Changelog
 Dependencies
 ~~~~~~~~~~~~
 
--  `Livestreamer <https://github.com/chrippa/livestreamer>`__
+-  `Streamlink <https://github.com/streamlink/streamlink>`__
 
